@@ -1,0 +1,44 @@
+﻿@model CtrlOrdem.Models.Servico
+
+@{
+    ViewData["Title"] = "Excluir";
+}
+
+<h1>Exclusão</h1>
+
+<h3>Tem certeza de que deseja excluir?</h3>
+<hr />
+<div class="row">
+    <div class="row g-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="ServicoId" />
+
+        <div class="col-8">
+            <label asp-for="Descricao" class="control-label"></label>
+            <input asp-for="Descricao" class="form-control" readonly />
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="col-3">
+            <label asp-for="Categoria" class="control-label"></label>
+            <input asp-for="Categoria" class="form-control" readonly />
+        </div>
+
+        <div class="col-2">
+            <label asp-for="Valor" class="control-label"></label>
+            <input asp-for="Valor" class="form-control" readonly />
+        </div>
+        <div class="col-3">
+            <label asp-for="Garantia" class="control-label"></label>
+            <input asp-for="Garantia" class="form-control" readonly />
+        </div>
+
+        <div class="form-group mt-5">
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="ServicoId" />
+                <input type="submit" value="Excluir" class="btn btn-sm btn-danger" /> |
+                <a asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>
+            </form>
+        </div>
+    </div>
+</div>

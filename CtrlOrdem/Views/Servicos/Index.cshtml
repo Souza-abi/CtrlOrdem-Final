@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CtrlOrdem.Models.Servico>
+
+@{
+    ViewData["Title"] = "Serviços";
+}
+
+<h1>Lista de Serviços</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-sm btn-primary">Cadastrar Serviço</a>
+</p>
+<form asp-controller="servicos" asp-action="Index">
+    <p>
+        Digite a descrição para filtrar: <input type="text" name="searchString" />
+        <input type="submit" value="Filtrar" class="btn btn-sm btn-secondary" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Garantia)
+            </th>
+            <th>
+                Ações
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderBy(m => m.Descricao))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Valor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Garantia)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ServicoId" class="btn btn-sm btn-outline-warning"><i class="bi bi-file-earmark-text"></i> Alterar</a>
+                    <a asp-action="Details" asp-route-id="@item.ServicoId" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"> Consultar</i></a>
+                    <a asp-action="Delete" asp-route-id="@item.ServicoId" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i> Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,210 @@
+﻿@model CtrlOrdem.Models.Tecnico
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Novo Técnico</h1>
+
+<hr />
+<div class="row">
+    <form asp-action="Create">
+        <div class="row g-3">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-3">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="CPF" class="control-label"></label>
+                <input asp-for="CPF" class="form-control" />
+                <span asp-validation-for="CPF" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="RG" class="control-label"></label>
+                <input asp-for="RG" class="form-control" />
+                <span asp-validation-for="RG" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="DataNascimento" class="control-label"></label>
+                <input asp-for="DataNascimento" class="form-control" />
+                <span asp-validation-for="DataNascimento" class="text-danger"></span>
+            </div>
+
+            <div class="col-4">
+                <label asp-for="Nacionalidade" class="control-label"></label>
+                <input asp-for="Nacionalidade" class="form-control" />
+                <span asp-validation-for="Nacionalidade" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <label asp-for="Sexo" class="control-label"></label>
+                <select asp-for="Sexo" class="form-control" id="Sexo">
+                    <option selected>Selecione...</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Outros">Outros</option>
+                </select>
+                <span asp-validation-for="Sexo" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <label asp-for="EstadoCivil" class="control-label"></label>
+                <select asp-for="EstadoCivil" class="form-control" id="EstadoCivil">
+                    <option selected>Selecione...</option>
+                    <option value="Solteiro(a)">Solteiro(a)</option>
+                    <option value="Casado(a)">Casado(a)</option>
+                    <option value="Divorciado(a)">Divorciado(a)</option>
+                    <option value="Viúvo(a)">Viúvo(a)</option>
+                    <option value="Separado(a)">Separado(a)</option>
+                    <option value="União estável">União estável</option>
+                </select>
+                <span asp-validation-for="EstadoCivil" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="CEP" class="control-label"></label>
+                <input asp-for="CEP" class="form-control" />
+                <span asp-validation-for="CEP" class="text-danger"></span>
+            </div>
+            <div class="col-5">
+                <label asp-for="Endereco" class="control-label"></label>
+                <input asp-for="Endereco" class="form-control" />
+                <span asp-validation-for="Endereco" class="text-danger"></span>
+            </div>
+            <div class="col-1">
+                <label asp-for="Numero" class="control-label"></label>
+                <input asp-for="Numero" class="form-control" />
+                <span asp-validation-for="Numero" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <label asp-for="Complemento" class="control-label"></label>
+                <input asp-for="Complemento" class="form-control" />
+                <span asp-validation-for="Complemento" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <label asp-for="Bairro" class="control-label"></label>
+                <input asp-for="Bairro" class="form-control" />
+                <span asp-validation-for="Bairro" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <label asp-for="Cidade" class="control-label"></label>
+                <input asp-for="Cidade" class="form-control" />
+                <span asp-validation-for="Cidade" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <label asp-for="UF" class="control-label"></label>
+                <select asp-for="UF" class="form-control">
+                    <option selected>Selecione...</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+                <span asp-validation-for="UF" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Telefone" class="control-label"></label>
+                <input asp-for="Telefone" class="form-control" />
+                <span asp-validation-for="Telefone" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Celular" class="control-label"></label>
+                <input asp-for="Celular" class="form-control" />
+                <span asp-validation-for="Celular" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Cargo" class="control-label"></label>
+                <select asp-for="Cargo" class="form-control" id="Sexo">
+                    <option selected>Selecione...</option>
+                    <option value="Técnico de Manutenção">Técnico de Manutenção</option>
+                    <option value="Técnico de Instalação">Técnico de Instalação</option>
+                    <option value="Supervisor">Supervisor</option>
+                </select>
+                <span asp-validation-for="Cargo" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Departamento" class="control-label"></label>
+                <select asp-for="Departamento" class="form-control" id="Sexo">
+                    <option selected>Selecione...</option>
+                    <option value="Manutenção">Manutenção</option>
+                    <option value="Suporte Técnico">Suporte Técnico</option>
+                </select>
+                <span asp-validation-for="Departamento" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="DataContratacao" class="control-label"></label>
+                <input asp-for="DataContratacao" class="form-control" />
+                <span asp-validation-for="DataContratacao" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Salario" class="control-label"></label>
+                <input asp-for="Salario" class="form-control" />
+                <span asp-validation-for="Salario" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Tipo" class="control-label"></label>
+                <select asp-for="Tipo" class="form-control" id="Sexo">
+                    <option selected>Selecione...</option>
+                    <option value="CLT">CLT</option>
+                    <option value="PJ">PJ</option>
+                    <option value="Freelance">Freelance</option>
+                </select>
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </div>
+
+
+            <div class="col-2">
+                <label asp-for="Observacao" class="control-label"></label>
+                <input asp-for="Observacao" class="form-control" />
+                <span asp-validation-for="Observacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script> src="@Url.Content("~/js/jquery-validate-pt-BR.js")"</script>
+}

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<CtrlOrdem.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<h1>Lista de Clientes</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-sm btn-primary">Cadastrar Cliente</a>
+</p>
+
+<form asp-controller="Clientes" asp-action="Index">
+    <p>
+        Digite Nome ou Razão Social para filtrar: <input type="text" name="searchString" />
+        <input type="submit" value="Filtrar" class="btn btn-sm btn-secondary" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeCompleto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CPFCNPJ)
+            </th>
+            @*             <th>
+            @Html.DisplayNameFor(model => model.DataNA)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.Sexo)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.EstadoCivil)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Celular)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contato)
+            </th>
+            <th>
+                Ações
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderBy(m => m.NomeCompleto))
+        {
+            <tr>
+                <td>
+                    @item.NomeCompleto.ToUpper()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CPFCNPJ)
+                </td>
+                @*             <td>
+            @Html.DisplayFor(modelItem => item.DataNA)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.EstadoCivil)
+            </td> *@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Celular)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contato)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ClienteID" class="btn btn-sm btn-outline-warning"><i class="bi bi-file-earmark-text"></i> Alterar</a>
+                    <a asp-action="Details" asp-route-id="@item.ClienteID" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"> Consultar</i></a>
+                    <a asp-action="Delete" asp-route-id="@item.ClienteID" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i> Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

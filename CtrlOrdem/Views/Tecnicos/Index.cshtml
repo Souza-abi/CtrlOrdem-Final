@@ -1,0 +1,69 @@
+﻿@model IEnumerable<CtrlOrdem.Models.Tecnico>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Técnicos</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Cadastrar Novo Técnico</a>
+</p>
+
+<form asp-controller="Tecnicos" asp-action="Index">
+    <p>
+        Digite o nome para filtrar: <input type="text" name="searchString" />
+        <input type="submit" value="Filtrar" class="btn btn-sm btn-secondary" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Celular)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cargo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Departamento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model.OrderBy(m => m.Nome))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Celular)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cargo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Departamento)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TecnicoId" class="btn btn-sm btn-outline-warning"><i class="bi bi-file-earmark-text"></i> Alterar</a>
+                    <a asp-action="Details" asp-route-id="@item.TecnicoId" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil-square"> Consultar</i></a>
+                    <a asp-action="Delete" asp-route-id="@item.TecnicoId" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i> Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,186 @@
+﻿@model CtrlOrdem.Models.Cliente
+
+@{
+    ViewData["Title"] = "Create";
+    var Datacadastro = DateTime.Now.ToString("MM/dd/yyyy"); 
+}
+
+<h1>Novo Cliente</h1>
+
+<hr />
+<div class="row">
+    <form asp-action="Create">
+        <div class="row g-3">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-4">
+                <label asp-for="NomeCompleto" class="control-label"></label>
+                <input asp-for="NomeCompleto" class="form-control text-uppercase" />
+                <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="CPFCNPJ" class="control-label"></label>
+                <input asp-for="CPFCNPJ" class="form-control" id="CPFCNPJ" />
+                <span asp-validation-for="CPFCNPJ" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="DataNA" class="control-label"></label>
+                <input asp-for="DataNA" class="form-control" />
+                <span asp-validation-for="DataNA" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Sexo" class="control-label"></label>
+                <select asp-for="Sexo" class="form-control" id="Sexo" >
+                    <option selected>Selecione...</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Outros">Outros</option>
+                </select>
+                <span asp-validation-for="Sexo" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="EstadoCivil" class="control-label"></label>
+                <select asp-for="EstadoCivil" class="form-control" id="EstadoCivil" >
+                    <option selected>Selecione...</option>
+                    <option value="Solteiro(a)">Solteiro(a)</option>
+                    <option value="Casado(a)">Casado(a)</option>
+                    <option value="Divorciado(a)">Divorciado(a)</option>
+                    <option value="Viúvo(a)">Viúvo(a)</option>
+                    <option value="Separado(a)">Separado(a)</option>
+                    <option value="União estável">União estável</option>
+                </select>
+                <span asp-validation-for="EstadoCivil" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="Telefone" class="control-label"></label>
+                <input asp-for="Telefone" class="form-control" />
+                <span asp-validation-for="Telefone" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Celular" class="control-label"></label>
+                <input asp-for="Celular" class="form-control" />
+                <span asp-validation-for="Celular" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="Contato" class="control-label"></label>
+                <input asp-for="Contato" class="form-control" />
+                <span asp-validation-for="Contato" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="TipoContato" class="control-label"></label>
+                <select asp-for="TipoContato" class="form-control">
+                    <option selected>Selecione...</option>
+                    <option value="Telefone">Telefone</option>
+                    <option value="Celular">Celular</option>
+                    <option value="E-mail">E-mail</option>
+                </select>
+                <span asp-validation-for="TipoContato" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="CEP" class="control-label"></label>
+                <input asp-for="CEP" class="form-control" />
+                <span asp-validation-for="CEP" class="text-danger"></span>
+            </div>
+            <div class="col-5">
+                <label asp-for="Endereco" class="control-label"></label>
+                <input asp-for="Endereco" class="form-control" />
+                <span asp-validation-for="Endereco" class="text-danger"></span>
+            </div>
+            <div class="col-1">
+                <label asp-for="Numero" class="control-label"></label>
+                <input asp-for="Numero" class="form-control" />
+                <span asp-validation-for="Numero" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <label asp-for="Complemento" class="control-label"></label>
+                <input asp-for="Complemento" class="form-control" />
+                <span asp-validation-for="Complemento" class="text-danger"></span>
+            </div>
+
+            <div class="col-4">
+                <label asp-for="Bairro" class="control-label"></label>
+                <input asp-for="Bairro" class="form-control" />
+                <span asp-validation-for="Bairro" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <label asp-for="Cidade" class="control-label"></label>
+                <input asp-for="Cidade" class="form-control" />
+                <span asp-validation-for="Cidade" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <label asp-for="UF" class="control-label"></label>
+                <select asp-for="UF" class="form-control">
+                    <option selected>Selecione...</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+                <span asp-validation-for="UF" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label asp-for="DataCadastro" class="control-label"></label>
+                <input asp-for="DataCadastro" class="form-control" value=@Datacadastro />
+                <span asp-validation-for="DataCadastro" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control">
+                    <option selected>Selecione...</option>
+                    <option value="Ativo">Ativo</option>
+                    <option value="Inativo">Inativo</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="Observacao" class="control-label"></label>
+                <input asp-for="Observacao" class="form-control" />
+                <span asp-validation-for="Observacao" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-5">
+                <input type="submit" value="Salvar" class="btn btn-sm btn-primary" /> |
+                <a asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+

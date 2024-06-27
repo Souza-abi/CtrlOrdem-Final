@@ -1,0 +1,139 @@
+﻿@model CtrlOrdem.Models.Ordem
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Alterar dados da Ordem</h1>
+
+<hr />
+<div class="row">
+    <form asp-action="Edit">
+        <div class="row g-3">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="OrdemId" />
+
+            <div class="col-5">
+                <label asp-for="ClienteId" class="control-label"></label>
+                <select asp-for="ClienteId" class="form-control" asp-items="ViewBag.ClienteId"></select>
+                <span asp-validation-for="ClienteId" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <label asp-for="TecnicoId" class="control-label"></label>
+                <select asp-for="TecnicoId" class="form-control" asp-items="ViewBag.TecnicoId"></select>
+                <span asp-validation-for="TecnicoId" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="Abertura" class="control-label"></label>
+                <input asp-for="Abertura" class="form-control" />
+                <span asp-validation-for="Abertura" class="text-danger"></span>
+            </div>
+            <div class="col-5">
+                <label asp-for="ServicoId" class="control-label"></label>
+                <select asp-for="ServicoId" class="form-control" asp-items="ViewBag.ServicoId"></select>
+                <span asp-validation-for="ServicoId" class="text-danger"></span>
+            </div>
+            <div class="col-7">
+                <label asp-for="Procedimento" class="control-label"></label>
+                <input asp-for="Procedimento" class="form-control" />
+                <span asp-validation-for="Procedimento" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Tempo" class="control-label"></label>
+                <input asp-for="Tempo" class="form-control" />
+                <span asp-validation-for="Tempo" class="text-danger"></span>
+            </div>
+
+            <div class="col-2">
+                <label class="control-label">Valor da Hora</label>
+                <select id="Valor" class="form-control" asp-items="ViewBag.Valor" disabled></select>
+            </div>
+
+
+            <div class="col-3">
+                <label asp-for="Taxas" class="control-label"></label>
+                <input asp-for="Taxas" class="form-control" />
+                <span asp-validation-for="Taxas" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Desconto" class="control-label"></label>
+                <input asp-for="Desconto" class="form-control" />
+                <span asp-validation-for="Desconto" class="text-danger"></span>
+            </div>
+
+            <div class="col-3">
+                <label class="control-label">Valor da Ordem</label>
+                <input id="Total" class="form-control" readonly />
+            </div>
+
+
+            <div class="col-4">
+                <label asp-for="Observacao" class="control-label"></label>
+                <input asp-for="Observacao" class="form-control" />
+                <span asp-validation-for="Observacao" class="text-danger"></span>
+            </div>
+
+            <div class="col-4">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control">
+                    <option selected>Selecione...</option>
+                    <option value="Aberto">Aberto</option>
+                    <option value="Fechado">Fechado</option>
+                    <option value="Cancelada">Cancelada</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group mt-5">
+                <input type="submit" value="Salvar" class="btn btn-sm btn-primary" /> |
+                <a asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Controle da mudança de valor da hora de serviço
+            $("#ServicoId").on("change", function (event) {
+                $("#Valor").val(this.value);
+                $("#Valor").trigger("change");
+                CalculoTotal();
+            });
+
+            $("#Tempo").on("change", function () {
+                CalculoTotal();
+            });
+
+            $("#Valor").on("change", function () {
+                CalculoTotal();
+            });
+
+            $("#Taxas").on("change", function () {
+                CalculoTotal();
+            });
+
+            $("#Desconto").on("change", function () {
+                CalculoTotal();
+            });
+
+            //Calculo do valor total
+            function CalculoTotal() {
+                var totalHoras = parseFloat($("#Tempo").val());
+                var valorHora = parseFloat($("#Valor option:selected").text().replace(",", "."));
+                var taxa = parseFloat($("#Taxas").val().replace(",", "."));
+                var descontos = parseFloat($("#Desconto").val().replace(",", "."));
+                var total = parseFloat((totalHoras * valorHora) + taxa - descontos).toFixed(2).toString().replace(".", ",");
+                $("#Total").val("R$" + total);
+            }
+
+            $("#ServicoId").trigger("change");
+        });
+    </script>
+    <script> src="@Url.Content("~/js/jquery-validate-pt-BR.js")"</script>
+}
